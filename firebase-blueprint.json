@@ -1,0 +1,76 @@
+{
+  "entities": {
+    "Story": {
+      "title": "Story Entity",
+      "description": "The core story content used in the platform",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "language": { "type": "string", "enum": ["en", "hi"] },
+        "bannerUrl": { "type": "string", "format": "uri" },
+        "thumbnailUrl": { "type": "string", "format": "uri" },
+        "content": { "type": "string" },
+        "readingTime": { "type": "number" },
+        "views": { "type": "number" },
+        "publishedAt": { "type": "string", "format": "date-time" },
+        "meta": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "description": { "type": "string" },
+            "keywords": { "type": "string" }
+          }
+        }
+      },
+      "required": ["title", "slug", "categoryId", "content", "language"]
+    },
+    "Category": {
+      "title": "Category Entity",
+      "description": "Groups stories and defines themes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "theme": { "type": "string", "enum": ["default", "kids", "horror", "moral", "royal"] },
+        "imageUrl": { "type": "string", "format": "uri" },
+        "order": { "type": "number" },
+        "status": { "type": "boolean" }
+      },
+      "required": ["name", "slug", "theme"]
+    },
+    "Settings": {
+      "title": "Site Settings",
+      "description": "Global configuration and social links",
+      "type": "object",
+      "properties": {
+        "heroImage": { "type": "string" },
+        "social": {
+          "type": "object",
+          "properties": {
+            "youtube": { "type": "string" },
+            "instagram": { "type": "string" },
+            "telegram": { "type": "string" },
+            "facebook": { "type": "string" },
+            "youtubeEnabled": { "type": "boolean" },
+            "instagramEnabled": { "type": "boolean" },
+            "telegramEnabled": { "type": "boolean" },
+            "facebookEnabled": { "type": "boolean" }
+          }
+        },
+        "ads": {
+          "type": "object",
+          "properties": {
+            "header": { "type": "string" },
+            "inline": { "type": "string" },
+            "sidebar": { "type": "string" },
+            "footer": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}
